@@ -46,21 +46,24 @@ public class App
                 String[] parts = cmd.split("\\?");
                 String find_del = parts[1];
                 String[] find_del_part = find_del.split("=");
-                int del_id = Integer.parseInt(find_del_part[1]);
-                if (del_id > 0 && del_id <= quotations.size())
+                try
                 {
-                    Quotation check = quotations.get(del_id - 1);
-                    if (del_id == check.id && quotations.get(del_id - 1).author != null)
+                    int del_id = Integer.parseInt(find_del_part[1]);
+                    if (del_id > 0 && del_id <= quotations.size())
                     {
-                        System.out.printf("%d번 명언이 삭제되었습니다.\n", del_id);
-                        quotations.get(del_id - 1).id = del_id;
-                        quotations.get(del_id - 1).author = null;
-                        quotations.get(del_id - 1).catalog = null;
-                    } else
-                    {
-                        System.out.printf("%d번 명언이 존재하지 않습니다.\n", del_id);
+                        Quotation check = quotations.get(del_id - 1);
+                        if (del_id == check.id && quotations.get(del_id - 1).author != null)
+                        {
+                            System.out.printf("%d번 명언이 삭제되었습니다.\n", del_id);
+                            quotations.get(del_id - 1).id = del_id;
+                            quotations.get(del_id - 1).author = null;
+                            quotations.get(del_id - 1).catalog = null;
+                        } else
+                        {
+                            System.out.printf("%d번 명언이 존재하지 않습니다.\n", del_id);
+                        }
                     }
-                }
+                } catch(NumberFormatException e){}
             }
         }
     }
