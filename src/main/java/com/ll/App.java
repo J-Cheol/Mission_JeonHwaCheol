@@ -10,7 +10,7 @@ public class App
     {
         System.out.println("== 명언 앱 ==");
         Scanner scanner = new Scanner(System.in);
-        List <Quotation> quotations = new ArrayList<>();
+        List<Quotation> quotations = new ArrayList<>();
         int id = 0;
         while (true)
         {
@@ -39,6 +39,15 @@ public class App
                     Quotation quotation = quotations.get(i);
                     System.out.printf("%d / %s / %s\n", quotation.id, quotation.author, quotation.catalog);
                 }
+            }
+            if (cmd.startsWith("삭제?id="))
+            {
+                String[] parts = cmd.split("\\?");
+                String find_del = parts[1];
+                String[] find_del_part = find_del.split("=");
+                int del_id = Integer.parseInt(find_del_part[1]);
+                quotations.remove(del_id - 1);
+                System.out.printf("%d번 명언이 삭제되었습니다.\n", del_id);
             }
         }
     }
