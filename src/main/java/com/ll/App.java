@@ -65,6 +65,26 @@ public class App
                     }
                 } catch(NumberFormatException e){}
             }
+            if (cmd.startsWith("수정?id="))
+            {
+                String[] parts = cmd.split("\\?");
+                String find_edit = parts[1];
+                String[] find_edit_part = find_edit.split("=");
+                try
+                {
+                    int edit_id = Integer.parseInt(find_edit_part[1]);
+                    if (edit_id > 0 && edit_id <= quotations.size())
+                    {
+                        System.out.println("명언(기존) : " + quotations.get(edit_id - 1).catalog);
+                        scanner.nextLine();
+                        System.out.print("명언 : ");
+                        quotations.get(edit_id - 1).catalog = scanner.nextLine();
+                        System.out.println("작가(기존) : " + quotations.get(edit_id - 1).author);
+                        System.out.print("작가 : ");
+                        quotations.get(edit_id - 1).author = scanner.nextLine();
+                    }
+                }catch(NumberFormatException e){}
+            }
         }
     }
 }
