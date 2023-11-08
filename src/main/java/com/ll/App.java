@@ -70,13 +70,9 @@ public class App
 
     void action_delete(String cmd)
     {
-//        String[] parts = cmd.split("\\?");
-//        String find_del = parts[1];
-//        String[] find_del_part = find_del.split("=");
-        int find_del_id = get_id(cmd);
         try
         {
-            int del_id = find_del_id;
+            int del_id = get_id(cmd);
             if (del_id > 0 && del_id <= quotations.size())
             {
                 Quotation check = quotations.get(del_id - 1);
@@ -98,9 +94,6 @@ public class App
 
     void action_edit(String cmd)
     {
-//        String[] parts = cmd.split("\\?");
-//        String find_edit = parts[1];
-//        String[] find_edit_part = find_edit.split("=");
         try
         {
             int edit_id = get_id(cmd);
